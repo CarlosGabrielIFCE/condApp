@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Data da Visita</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="dtVisita"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.dtVisita.valid && (form.controls.dtVisita.dirty || form.controls.dtVisita.touched)" color="danger">
+      <div [hidden]="!form.controls.dtVisita.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Hora da Visita</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" formControlName="hrVisita"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.hrVisita.valid && (form.controls.hrVisita.dirty || form.controls.hrVisita.touched)" color="danger">
+      <div [hidden]="!form.controls.hrVisita.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Visitante</ion-label>
+      <ion-select formControlName="visitante">
+        <ion-option *ngFor="let visitante of visitantes" value="{{ visitante.name  }}">{{ visitante.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.visitante.valid && (form.controls.visitante.dirty || form.controls.visitante.touched)" color="danger">
+      <div [hidden]="!form.controls.visitante.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Residência de Destino</ion-label>
+      <ion-select formControlName="morador">
+        <ion-option *ngFor="let residence of residencias" value="{{ residence.nameResidence }}">{{ residence.nameResidence }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.morador.valid && (form.controls.morador.dirty || form.controls.morador.touched)" color="danger">
+      <div [hidden]="!form.controls.morador.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+    </div>
+  </form>
+</ion-content>

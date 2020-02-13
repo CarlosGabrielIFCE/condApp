@@ -14,6 +14,7 @@ import { ResidenceService } from '../providers/residence/residence.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { VisitanteService } from '../providers/visitante/visitante.service';
+import { VisitService } from '../providers/visit/visit.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { VisitanteService } from '../providers/visitante/visitante.service';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ResidenceService,
-    VisitanteService
+    VisitanteService,
+    VisitService
   ]
 })
 export class AppModule { }
