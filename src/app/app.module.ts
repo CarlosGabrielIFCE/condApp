@@ -8,6 +8,12 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ResidenceService } from '../providers/residence/residence.service';
+
+//Imports do AngularFire2
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { VisitanteService } from '../providers/visitante/visitante.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +24,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "AIzaSyBfavJbUuiu-BbrmLharlk54t3H60UyIfg",
+        authDomain: "condapp-10098.firebaseapp.com",
+        databaseURL: "https://condapp-10098.firebaseio.com",
+        projectId: "condapp-10098",
+        storageBucket: "condapp-10098.appspot.com",
+        messagingSenderId: "78965565992",
+      }
+    ),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +45,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ResidenceService,
+    VisitanteService
   ]
 })
-export class AppModule {}
+export class AppModule { }
