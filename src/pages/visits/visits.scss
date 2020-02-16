@@ -1,3 +1,10 @@
 page-visits {
 
+    .ion-item-active {
+        border-top: 3px solid green;
+    }
+
+    .ion-item-inactive {
+        border-top: 3px solid red;
+    }
 }

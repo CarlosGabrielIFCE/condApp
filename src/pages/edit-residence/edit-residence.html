@@ -7,34 +7,51 @@
 <ion-content padding>
   <form [formGroup]="form">
     <ion-item>
-      <ion-label stacked>Nome da Residência</ion-label>
-      <ion-input type="text" formControlName="nameResidence"></ion-input>
+      <ion-label stacked>Nome do Conjunto</ion-label>
+      <ion-input type="text" formControlName="txNmConjunto"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.nameResidence.valid && (form.controls.nameResidence.dirty || form.controls.nameResidence.touched)" color="danger">
-      <div [hidden]="!form.controls.nameResidence.errors.required">
+    <ion-item
+      *ngIf="!form.controls.txNmConjunto.valid && (form.controls.txNmConjunto.dirty || form.controls.txNmConjunto.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.txNmConjunto.errors.required">
         O campo é obrigatório
       </div>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Telefone</ion-label>
-      <ion-input type="tel" formControlName="tel"></ion-input>
+      <ion-label stacked>Nome da Casa</ion-label>
+      <ion-input type="text" formControlName="txNmCasa"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.tel.valid && (form.controls.tel.dirty || form.controls.tel.touched)" color="danger">
-      <div [hidden]="!form.controls.tel.errors.required">
+    <ion-item *ngIf="!form.controls.txNmCasa.valid && (form.controls.txNmCasa.dirty || form.controls.txNmCasa.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.txNmCasa.errors.required">
         O campo é obrigatório
       </div>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Nome do Inquilino</ion-label>
-      <ion-input type="text" formControlName="nameOwner"></ion-input>
+      <ion-input type="text" formControlName="txNmMorador"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.nameOwner.valid && (form.controls.nameOwner.dirty || form.controls.nameOwner.touched)" color="danger">
-      <div [hidden]="!form.controls.nameOwner.errors.required">
+    <ion-item
+      *ngIf="!form.controls.txNmMorador.valid && (form.controls.txNmMorador.dirty || form.controls.txNmMorador.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.txNmMorador.errors.required">
         O campo é obrigatório
       </div>
-    </ion-item>   
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="tel" formControlName="telMorador"></ion-input>
+    </ion-item>
+    <ion-item
+      *ngIf="!form.controls.telMorador.valid && (form.controls.telMorador.dirty || form.controls.telMorador.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.telMorador.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
 
     <div padding>
       <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>

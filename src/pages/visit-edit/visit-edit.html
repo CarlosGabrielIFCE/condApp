@@ -26,22 +26,33 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Visitante</ion-label>
-      <ion-select formControlName="visitante">
-        <ion-option *ngFor="let visitante of visitantes" value="{{ visitante.name  }}">{{ visitante.name }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item *ngIf="!form.controls.visitante.valid && (form.controls.visitante.dirty || form.controls.visitante.touched)" color="danger">
-      <div [hidden]="!form.controls.visitante.errors.required">
-        O campo é obrigatório
-      </div>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10>
+          <ion-item>
+            <ion-label stacked>Visitante</ion-label>
+            <ion-select formControlName="visitante">
+              <ion-option *ngFor="let visitante of visitantes" value="{{ visitante.txNmVisitante  }}">{{ visitante.txNmVisitante }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.visitante.valid && (form.controls.visitante.dirty || form.controls.visitante.touched)" color="danger">
+            <div [hidden]="!form.controls.visitante.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button light (click)="addVisitante()" outline>
+            <ion-icon name="add"></ion-icon>
+          </button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
     <ion-item>
       <ion-label stacked>Residência de Destino</ion-label>
       <ion-select formControlName="morador">
-        <ion-option *ngFor="let residence of residencias" value="{{ residence.nameResidence }}">{{ residence.nameResidence }}</ion-option>
+        <ion-option *ngFor="let residence of residencias" value="{{ residence.txNmCasa }}">{{ residence.txNmConjunto }} - {{ residence.txNmCasa }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="!form.controls.morador.valid && (form.controls.morador.dirty || form.controls.morador.touched)" color="danger">

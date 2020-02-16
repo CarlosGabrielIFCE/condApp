@@ -32,12 +32,12 @@ export class VisitanteService {
     return new Promise((resolve, reject) => {
       if (visitor.key) {
         this.db.list(this.PATH)
-          .update(visitor.key, {name: visitor.name, tel: visitor.tel})
+          .update(visitor.key, {txNmVisitante: visitor.txNmVisitante, cpfVisitante: visitor.cpfVisitante, nrTelVisitante: visitor.nrTelVisitante})
           .then(() => resolve())
           .catch((e) => reject(e));
       }else {
         this.db.list(this.PATH)
-          .push({ name: visitor.name, tel: visitor.tel})
+          .push({txNmVisitante: visitor.txNmVisitante, cpfVisitante: visitor.cpfVisitante, nrTelVisitante: visitor.nrTelVisitante})
           .then(() => resolve());
       }
     })

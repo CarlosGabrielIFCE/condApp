@@ -11,7 +11,7 @@ export class ResidenceService {
 
   //Retorna todos os Condôminos
   getAll() {
-    return this.db.list(this.PATH, ref => ref.orderByChild('nameResidence'))
+    return this.db.list(this.PATH, ref => ref.orderByChild('txNmCasa'))
       .snapshotChanges()
       .map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -32,12 +32,12 @@ export class ResidenceService {
     return new Promise((resolve, reject) => {
       if (residence.key) {
         this.db.list(this.PATH)
-          .update(residence.key, {nameOwner: residence.name, tel: residence.tel, nameResidence: residence.nameResidence})
+          .update(residence.key, {txNmConjunto: residence.txNmConjunto, txNmCasa: residence.txNmCasa, txNmMorador: residence.txNmMorador, telMorador: residence.telMorador})
           .then(() => resolve())
           .catch((e) => reject(e));
       }else {
         this.db.list(this.PATH)
-          .push({ nameOwner: residence.nameOwner, tel: residence.tel, nameResidence: residence.nameResidence})
+          .push({txNmConjunto: residence.txNmConjunto, txNmCasa: residence.txNmCasa, txNmMorador: residence.txNmMorador, telMorador: residence.telMorador})
           .then(() => resolve());
       }
     })

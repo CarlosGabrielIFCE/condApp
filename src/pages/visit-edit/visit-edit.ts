@@ -44,9 +44,15 @@ export class VisitEditPage {
       key: [this.visit.key],
       dtVisita: [this.visit.dtVisita, Validators.required],
       hrVisita: [this.visit.hrVisita, Validators.required],
+      hrSaida: [this.visit.hrSaida],
       visitante: [this.visit.visitante, Validators.required],
-      morador: [this.visit.morador, Validators.required]
+      morador: [this.visit.morador, Validators.required],
+      inAtiva: [true]
     });
+  }
+
+  addVisitante() {
+    this.navCtrl.push('VisitanteEditPage');
   }
 
   onSubmit() {

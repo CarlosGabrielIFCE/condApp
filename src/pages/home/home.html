@@ -12,9 +12,9 @@
   <ion-list>
     <ion-item-sliding *ngFor="let residence of residences | async">
       <ion-item>
-        <h1>{{ residence.nameResidence }}</h1>
-        <p>{{ residence.tel }}</p>
-        <p> {{ residence.nameOwner }}</p>
+        <h1>{{ residence.txNmConjunto }} - {{ residence.txNmCasa}}</h1>
+        <p>Morador: {{ residence.txNmMorador }}</p>
+        <p>Telefone de Contato: {{ residence.telMorador }}</p>
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="secondary" (click)="editResidence(residence)">

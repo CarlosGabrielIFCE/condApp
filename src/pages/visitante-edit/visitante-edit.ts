@@ -28,8 +28,9 @@ export class VisitanteEditPage {
   createForm() {
     this.form = this.formBuilder.group({
       key: [this.visitor.key],
-      name: [this.visitor.name, Validators.required],
-      tel: [this.visitor.tel, Validators.required],
+      txNmVisitante: [this.visitor.txNmVisitante, Validators.required],
+      cpfVisitante: [this.visitor.cpfVisitante, Validators.required],
+      nrTelVisitante: [this.visitor.nrTelVisitante, Validators.required],
     });
   }
 

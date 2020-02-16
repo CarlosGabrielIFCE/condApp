@@ -28,9 +28,10 @@ export class EditResidencePage {
   createForm() {
     this.form = this.formBuilder.group({
       key: [this.residence.key],
-      nameResidence: [this.residence.nameResidence, Validators.required],
-      tel: [this.residence.tel, Validators.required],
-      nameOwner: [this.residence.nameOwner, Validators.required]
+      txNmConjunto: [this.residence.txNmConjunto, Validators.required],
+      txNmCasa: [this.residence.txNmCasa, Validators.required],
+      txNmMorador: [this.residence.txNmMorador, Validators.required],
+      telMorador: [this.residence.telMorador, Validators.required]
     });
   }
 

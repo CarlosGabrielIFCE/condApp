@@ -12,8 +12,9 @@
   <ion-list>
     <ion-item-sliding *ngFor="let visitor of visitors | async">
       <ion-item>
-        <h1>{{ visitor.name }}</h1>
-        <p>{{ visitor.tel }}</p>
+        <h1>Nome: {{ visitor.txNmVisitante }}</h1>
+        <p>CPF: {{ visitor.cpfVisitante }}</p>
+        <p>Telefone: {{ visitor.nrTelVisitante }}</p>
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="secondary" (click)="editVisitor(visitor)">

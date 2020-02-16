@@ -10,22 +10,30 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let visit of visits | async">
-      <ion-item>
-        <h1>Visitante: {{ visit.visitante.name }}</h1>
-        <h1>Morador: {{ visit.morador.nameOwner }}</h1>
-        <p>Data da Visita: {{ visit.dtVisita }}</p>
-        <p>Hora da Visita: {{ visit.hrVisita }}</p>
-      </ion-item>
-      <ion-item-options side="left">
-        <button ion-button color="secondary" (click)="editVisit(visit)">
-          <ion-icon name="create"></ion-icon>
-        </button>
-        <button ion-button color="danger" (click)="removeVisit(visit.key)">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <ng-container *ngFor="let visit of visits | async">
+      <ion-card text-wrap [ngClass]="(visit.inAtiva == true) ? 'ion-item-active' : 'ion-item-inactive'">
+        <ion-item-sliding>
+          <ion-item>
+            <h1>Visitante: {{ visit.visitante }}</h1>
+            <h1>Morador: {{ visit.morador }}</h1>
+            <p>Data da Visita: {{ visit.dtVisita | date: 'dd/MM/yyyy' }}</p>
+            <p>Hora da Entrada: {{ visit.hrVisita }}</p>
+            <p>Hora de Saída: {{ visit.hrSaida}}</p>
+          </ion-item>
+          <ion-item-options side="left">
+            <button ion-button color="primary" (click)="finishVisit(visit)" *ngIf="visit.inAtiva == true">
+              <ion-icon name="remove"></ion-icon>
+            </button>
+            <button ion-button color="secondary" (click)="editVisit(visit)">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button color="danger" (click)="removeVisit(visit.key)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-card>
+    </ng-container>
   </ion-list>
 
   <ion-fab bottom right>

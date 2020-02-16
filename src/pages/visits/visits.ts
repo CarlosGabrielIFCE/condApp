@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { VisitService } from '../../providers/visit/visit.service';
 
@@ -35,5 +35,17 @@ export class VisitsPage {
           this.toast.create({message: "Erro ao remover a visita", duration: 3000}).present();
         })
     }
+  }
+
+  finishVisit(visit: any) {
+    visit.inAtiva = false;
+    visit.hrSaida = new Date().toLocaleTimeString();
+    this.visitService.save(visit)
+      .then(() => {
+        this.toast.create({message: "Visita finalizada com sucesso.", duration: 3000}).present();
+      })
+      .catch(() => {
+        this.toast.create({message: "Ocorreu um erro ao finalizar a visita.", duration: 3000}).present();
+      });
   }
 }
